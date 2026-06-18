@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { PHOTOS, HER_NAME, AI_MESSAGES } from '@/lib/photos';
 import { UNIVERSES, TOTAL_DURATION } from '@/lib/storyScript';
-import { AmbientMusic } from '@/lib/ambientMusic';
+import { AudioPlayer } from '@/lib/audioPlayer';
+import { AUDIO_FILE } from '@/lib/audioConfig';
 import StoryOverlay from './StoryOverlay';
 
 interface Star { x: number; y: number; z: number; s: number; c: string }
@@ -30,7 +31,7 @@ const CinematicUniverse: React.FC = () => {
   const [muted, setMuted] = useState(false);
   const [ended, setEnded] = useState(false);
 
-  const musicRef = useRef<AmbientMusic | null>(null);
+  const musicRef = useRef<AudioPlayer | null>(null);
   const rafRef = useRef<number>(0);
   const t0Ref = useRef<number>(0);
   const mouseRef = useRef({ x: 0, y: 0, tx: 0, ty: 0 });
@@ -92,7 +93,7 @@ const CinematicUniverse: React.FC = () => {
     setupWorld();
     setStarted(true);
     t0Ref.current = performance.now();
-    musicRef.current = new AmbientMusic();
+    musicRef.current = new AudioPlayer(AUDIO_FILE);
     try { await musicRef.current.start(); } catch (e) { /* ignore */ }
   }, [started, setupWorld]);
 
