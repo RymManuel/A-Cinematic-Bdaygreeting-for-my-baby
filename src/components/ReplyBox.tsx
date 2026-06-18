@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { HER_NAME } from '@/lib/photos';
 
-const STORAGE_KEY = 'mybaby_reply_v1';
+const STORAGE_KEY = 'krishna_reply_v1';
 
 interface SavedReply {
   text: string;
