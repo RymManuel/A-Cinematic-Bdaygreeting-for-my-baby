@@ -1,4 +1,4 @@
-export const HER_NAME = 'KRISHNA';
+export const HER_NAME = 'My Baby';
 export const PET_NAME = 'My Baby';
 
 export const PHOTOS: string[] = [
